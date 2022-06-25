@@ -1,0 +1,23 @@
+// #sidenave{
+//     width: 20%;
+//     float: left;
+// }
+#mainLayout{
+    margin-left: 17%;
+    width: 83%;
+    //margin-right: 0 !important;
+}
+.row{
+    margin-right: 0 !important;
+}
+#componentContainer{
+    margin-top: 10px;
+}
+.fixed-left {
+    position: fixed;
+    top: 0; // set it equal as the height of fixed-top 
+    bottom: 0; // so that it will stick to bottom
+    z-index: 0;
+    overflow-x: auto; // it will have the scroll if it has more content
+    width: 250px; // set as per your requirement
+  }
