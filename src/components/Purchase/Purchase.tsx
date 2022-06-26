@@ -144,7 +144,7 @@ const Purchase = (props: any) => {
         return product.productDetails.map((m: any, i: Number) => 
         {
           return  <tr id={'row_'+i}>
-            <td scope="row">{i}</td>
+            <td scope="row"  className="sl">{i}</td>
                 <td scope="row"><select id={'type_'+i} name='Type'  onChange={(event:any) => updateRow(i, m,event)} className="form-control">
                 <option value={0}>--Select--</option>
                     <option value={1}>Product</option>
@@ -193,7 +193,7 @@ const Purchase = (props: any) => {
                         <li className="breadcrumb-item active">Purchase Form</li>
                     </ol>
                 </div>
-                {/* <!--------------------------------------------------------------------------------->
+{/* <!--------------------------------------------------------------------------------->
 <!------------------------------Product Form--------------------------------------->
 <!---------------------------------------------------------------------------------> */}
                 <div className="card">
@@ -207,7 +207,7 @@ const Purchase = (props: any) => {
 
                                 <div className="col-md-4 mb-2">
                                     <label>Address</label>
-                                    <textarea value={product.Address} name='Address'  onChange={update} className="form-control" placeholder="Address"></textarea>
+                                    <textarea value={product.Address} name='Address'  onChange={update} className="form-control" placeholder="Address" rows={1}></textarea>
                                 </div>
                                 <div className="col-md-4 mb-2">
                                     <label>Invoice Number</label>
@@ -257,11 +257,16 @@ const Purchase = (props: any) => {
                                 <label>checkbox4</label>
                             </label>
                         </div> */}
-                                <div className="table-responsive mt-4">
+                                
+                            </div>
+                            <div className="text-end">
+                            <button type="button" className="btn btn-success" onClick={AddNewRow}>New Row</button>
+                            </div>
+                            <div className="table-responsive">
                                     <table className="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th scope="col">Sl No.</th>
+                                            <th scope="col" className="sl">Sl No.</th>
                                                 <th scope="col">Type</th>
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Sub Cateagory</th>
@@ -284,10 +289,9 @@ const Purchase = (props: any) => {
                                             }
                                         </tbody>
                                     </table>
-                                    <button type="button" className="btn btn-success" onClick={AddNewRow}>New Row</button>
                                 </div>
-                            </div>
                         </form>
+                        
                     </div>
                     <div className="card-footer text-end py-1">
                         <button type="button" className="btn btn-success">Save</button>

@@ -208,7 +208,7 @@ const chartseries2 = [
                                             <div className="small">Earnings (Monthly)</div>
                                             <div className="text-lg fw-bold">$40,000</div>
                                         </div>
-                                        <i className="fa-solid fa-calendar"></i>
+                                        <i className="fa fa-calculator me-2"></i>
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex align-items-center justify-content-between small">
@@ -226,7 +226,7 @@ const chartseries2 = [
                                             <div className="small">Earnings (Monthly)</div>
                                             <div className="text-lg fw-bold">$40,000</div>
                                         </div>
-                                        <i className="fa-solid fa-dollar-sign"></i>
+                                        <i className="fas fa-dollar-sign"></i>
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex align-items-center justify-content-between small">
@@ -244,7 +244,7 @@ const chartseries2 = [
                                             <div className="small">Earnings (Monthly)</div>
                                             <div className="text-lg fw-bold">$40,000</div>
                                         </div>
-                                        <i className="fa-solid fa-list-check"></i>
+                                        <i className="fa fa-list"></i>
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex align-items-center justify-content-between small">
@@ -262,7 +262,7 @@ const chartseries2 = [
                                             <div className="small">Earnings (Monthly)</div>
                                             <div className="text-lg fw-bold">$40,000</div>
                                         </div>
-                                        <i className="fa-solid fa-message"></i>
+                                        <i className="fas fa-comment-alt"></i>
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex align-items-center justify-content-between small">

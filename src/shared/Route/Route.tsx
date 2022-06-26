@@ -16,7 +16,8 @@ const DiRoutes = () => {
     // }
 
     return (
-        <div>{
+        <>
+        {
             useRoutes([
                 { path: loginPath, element: <Login /> },
                 { path: dashboardPath, element: <Dashboard /> },
@@ -28,7 +29,8 @@ const DiRoutes = () => {
             { path: '*', element: <Navigate to={loginPath} /> }
         ])
             
-            }</div>
+            }
+            </>
     )
     // return (
     //     <Routes>

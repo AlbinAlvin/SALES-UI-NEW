@@ -27,7 +27,7 @@ const Sales=(props:any)=>{
                             </div>
                             <div className="col-md-4 mb-2">
                                 <label>Address</label>
-                                <textarea className="form-control"  placeholder="Address"></textarea>
+                                <textarea className="form-control"   placeholder="Address"  rows={1}></textarea>
                             </div>
                             <div className="col-md-4 mb-2">
                             <label>Contact Number</label>

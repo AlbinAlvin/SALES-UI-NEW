@@ -9,6 +9,11 @@ import './Layout.scss'
 export const Layout = (props: any) => {
   const[routeName, setRouteName] = useState('');
 
+  const [isActive, setActive] = useState(false);
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
+
   // useEffect(() => {
   //   setRouteName('');
   //   console.log(routeName);
@@ -16,20 +21,18 @@ export const Layout = (props: any) => {
 
   return (
     <Router>
-      <div id='layoutContainer' className="w-100" >
-        <div id='layoutSubcontainer' className="">
-        <div className="row justify-content-start">
-      <div id="sidenave" className="col-2 fixed-left">
+      <div  className={"main_wrapper" +(isActive ? ' toggle' : ' ')} >
+      <div  className="side_bar">
         <LayoutNav></LayoutNav>
         </div>
-      <div id="mainLayout" className="col-9">
-      <Header></Header>
-      <div id='componentContainer'>
+      <div  className="mainlayout">
+      <Header handleToggle={()=>toggleClass()} ></Header>
+      <div id='componentContainer' className="content_layout">
         <DiRoutes />
         </div>
+        <div className="footer text-center">Thia is footer</div>
         </div>
-        </div>
-      </div>
+       
       </div>
     </Router>
   );
