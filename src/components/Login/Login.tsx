@@ -10,7 +10,7 @@ const Login = (props: any) => {
         navigate(dashboardPath);
     }
         return (
-            <>
+            <>  
 	<div className="screen">
 		<div className="screen__content">
 			<form className="login">

@@ -6,6 +6,8 @@ import { Dirent } from "fs";
 import Header from "../Header/Header";
 import LayoutNav from "../LayoutNav/LayoutNav";
 import './Layout.scss'
+import Alert from "../alert";
+import Toast from '../toast'
 export const Layout = (props: any) => {
   const[routeName, setRouteName] = useState('');
 
@@ -21,7 +23,7 @@ export const Layout = (props: any) => {
 
   return (
     <Router>
-      <div  className={"main_wrapper" +(isActive ? ' toggle' : ' ')} >
+      <div  className={"main_wrapper" +(isActive ? ' isopen' : ' ')} >
       <div  className="side_bar">
         <LayoutNav></LayoutNav>
         </div>
@@ -32,7 +34,7 @@ export const Layout = (props: any) => {
         </div>
         <div className="footer text-center">Thia is footer</div>
         </div>
-       
+       {/* <Alert/> */}
       </div>
     </Router>
   );
