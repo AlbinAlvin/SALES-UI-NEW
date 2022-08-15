@@ -10,7 +10,7 @@ const Sales=(props:any)=>{
                 <h1 className="page-title m-0">Sales Form</h1> 
             <ol className="breadcrumb"> 
                 <li className="breadcrumb-item">
-                <a href="javascript:void(0);">Home</a></li> 
+                <a href="javascript:void(0);">Home12123</a></li> 
                 <li className="breadcrumb-item active">Sales Form</li>
             </ol> 
             </div>
@@ -27,7 +27,7 @@ const Sales=(props:any)=>{
                             </div>
                             <div className="col-md-4 mb-2">
                                 <label>Address</label>
-                                <textarea className="form-control"  placeholder="Address"></textarea>
+                                <textarea className="form-control"   placeholder="Address"  rows={1}></textarea>
                             </div>
                             <div className="col-md-4 mb-2">
                             <label>Contact Number</label>

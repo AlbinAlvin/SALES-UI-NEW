@@ -1,4 +1,5 @@
 import { fontSize } from "@mui/system";
+import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import './LayoutNav.scss';
 export const LayoutNav = () => {
@@ -25,144 +26,21 @@ export const LayoutNav = () => {
     }
 
 
-    return (<>
-        {/* <div id="mySidenav" classNameName="sidenav">
-            <a classNameName="closebtn" onClick={closeNav}>&times;</a>
-            <a href="#home"><i classNameName="fa fa-fw fa-home"></i> Home</a>
-  <a href="#services"><i classNameName="fa fa-fw fa-wrench"></i> Services</a>
-  <a href="#clients"><i classNameName="fa fa-fw fa-user"></i> Clients</a>
-  <a href="#contact"><i classNameName="fa fa-fw fa-envelope"></i> Contact</a>
-        </div>*/}
-  {/* <div classNameName="flex-header">
-            <span onClick={openNav}>&#9776; </span>
-            <Header></Header>
-            </div> */}
-<section className="naveRoot"> 
-<aside className="sidebar">
-         <header>
-        Menu
-      </header>
-    <nav className="sidebar-nav">
- 
-      <ul>
-        <li>
-          <a href="#"><i className="ion-bag"></i> <span>Shop</span></a>
-          <ul className="nav-flyout">
-            <li>
-              <a href="#"><i className="ion-ios-color-filter-outline"></i>Derps</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-clock-outline"></i>Times</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-android-star-outline"></i>Hates</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-heart-broken"></i>Beat</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><i className="ion-ios-settings"></i> <span className="">Controls</span></a>
-          <ul className="nav-flyout">
-            <li>
-              <a href="#"><i className="ion-ios-alarm-outline"></i>Watch</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-camera-outline"></i>Creeper</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-chatboxes-outline"></i>Hate</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-cog-outline"></i>Grinder</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><i className="ion-ios-briefcase-outline"></i> <span className="">Folio</span></a>
-          <ul className="nav-flyout">
-            <li>
-              <a href="#"><i className="ion-ios-flame-outline"></i>Burn</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-lightbulb-outline"></i>Bulbs</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-location-outline"></i>Where You</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-locked-outline"></i>On Lock</a>
-            </li>
-             <li>
-              <a href="#"><i className="ion-ios-navigate-outline"></i>Ghostface</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><i className="ion-ios-analytics-outline"></i> <span className="">Graphicals</span></a>
-          <ul className="nav-flyout">
-            <li>
-              <a href="#"><i className="ion-ios-timer-outline"></i>Timers</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-arrow-graph-down-left"></i>You Lose</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-partlysunny-outline"></i>Stormy</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-timer-outline"></i>Lookie Look</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-game-controller-a-outline"></i>Dork Mfer</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><i className="ion-ios-paper-outline"></i> <span className="">Papers</span></a>
-          <ul className="nav-flyout">
-            <li>
-              <a href="#"><i className="ion-ios-filing-outline"></i>File Cab</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-information-outline"></i>Infos</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-paperplane-outline"></i>Planes</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-android-star-outline"></i>Shop</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><i className="ion-ios-navigate-outline"></i> <span className="">Ass Finder</span></a>
-          <ul className="nav-flyout">
-            <li>
-              <a href="#"><i className="ion-ios-flame-outline"></i>Burn</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-lightbulb-outline"></i>Bulbs</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-location-outline"></i>Where You</a>
-            </li>
-            <li>
-              <a href="#"><i className="ion-ios-locked-outline"></i>On Lock</a>
-            </li>
-             <li>
-              <a href="#"><i className="ion-ios-navigate-outline"></i>Ghostface</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"><i className="ion-ios-medical-outline"></i> <span className="">Cocaine</span></a>
-        </li>
-      </ul>
+    return (
+    <>
+<aside className="sidebar_aside">
+    <div className="logo"> Logo</div>
+    <nav className="sidebar_nav">
+        <ul className="nav flex-column mb-0">
+        <li className="nav-item"><Link to="/Dashboard" className="nav-link d-flex align-items-center"><i className="fa fa-home me-2"></i>Home</Link></li>
+        <li className="nav-item"><Link to="/Purchase" className="nav-link d-flex align-items-center"><i className="fas fa-shopping-basket me-2"></i>Purchase</Link></li>
+        <li className="nav-item"><Link to="/Sales" className="nav-link d-flex align-items-center"><i className="fas fa-credit-card me-2"></i>Sales</Link></li>
+        <li className="nav-item"><Link to="/Product" className="nav-link d-flex align-items-center"><i className="fas fa-hockey-puck me-2"></i>Product</Link></li>
+        <li className="nav-item"><Link to="/SubProduct" className="nav-link d-flex align-items-center"><i className="fas fa-store-alt me-2"></i>Sub Product</Link></li>
+        <li className="nav-item"><Link to="/SubProduct" className="nav-link d-flex align-items-center"><i className="fas fa-store-alt me-2"></i>Alert</Link></li>
+        </ul>
     </nav>
   </aside>
-        </section>
     </>
     )
 }

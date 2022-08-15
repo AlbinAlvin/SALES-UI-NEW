@@ -86,7 +86,7 @@ const SubProduct=(props:any)=>{
                         </div>
                         <div className="col-md-4 mb-2">
                             <label>Description</label>
-                            <textarea className="form-control"></textarea>
+                            <textarea className="form-control"  rows={1}></textarea>
                         </div>
                         
                     </div>

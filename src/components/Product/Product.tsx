@@ -103,7 +103,7 @@ const Product = (props: any) => {
                   </div>
                   <div className="col-md-4 mb-2">
                     <label>Description</label>
-                    <textarea name="Description" onChange={update} className="form-control"></textarea>
+                    <textarea name="Description" onChange={update} className="form-control"  rows={1}></textarea>
                   </div>
                 </div>
               </form>

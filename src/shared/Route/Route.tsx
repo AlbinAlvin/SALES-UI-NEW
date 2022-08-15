@@ -3,11 +3,12 @@ import DiProtectedRoute from './ProtectedRoute';
 import RouteList from './RouteList';
 import Login from '../../components/Login/Login';
 import Dashboard from '../../components/Dashboard/Dashboard';
-import { loginPath,dashboardPath,purchasePath,salesPath, productPath,subProductPath } from './RoutePath';
+import { loginPath,dashboardPath,purchasePath,salesPath, productPath,subProductPath,toast } from './RoutePath';
 import Purchase from '../../components/Purchase/Purchase';
 import Sales from '../../components/Sales/Sales';
 import Product from '../../components/Product/Product';
 import SubProduct from '../../components/SubProduct/SubProduct';
+import Toast from '../../shared/toast';
 const DiRoutes = () => {
 
     // const getRoutesList = ():any => {
@@ -16,7 +17,8 @@ const DiRoutes = () => {
     // }
 
     return (
-        <div>{
+        <>
+        {
             useRoutes([
                 { path: loginPath, element: <Login /> },
                 { path: dashboardPath, element: <Dashboard /> },
@@ -24,11 +26,13 @@ const DiRoutes = () => {
                 { path: salesPath, element: <Sales /> },
                 { path: productPath, element: <Product /> },
                 { path: subProductPath, element: <SubProduct /> },
+                {path: toast, element: <Toast/>},
             { path: '/', element: <Navigate to={loginPath} /> },
             { path: '*', element: <Navigate to={loginPath} /> }
         ])
             
-            }</div>
+            }
+            </>
     )
     // return (
     //     <Routes>

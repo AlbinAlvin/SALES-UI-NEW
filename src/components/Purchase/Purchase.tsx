@@ -1,10 +1,35 @@
 import { type } from "@testing-library/user-event/dist/type";
 import { typeImplementation } from "@testing-library/user-event/dist/type/typeImplementation";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 import { useEffect, useState } from "react"
 
 
 const Purchase = (props: any) => {
+    const [issetproduct,setproduct] =useState(false)
+    const [ispurchase,setPurchase] =useState(false)
+    const [isLength,setLenght] = useState(0)
+    const getLenthe = () =>{
+        setLenght(isLength)
+    }
+useEffect(() =>{
+    if(isLength >= 5){
+        const mytable = document.getElementById("myTable");
+        mytable?.classList.add('show')
+    }
+    else if(isLength<=5){
+        const mytable = document.getElementById("myTable");
+        mytable?.classList.remove('show')
+    }
+    if(isLength == 5){
+        const mytable = document.getElementById("myTable")?.getElementsByTagName('tbody');
+        // const aa = mytable?.clientHeight()
+    } 
+})
+
+    // const toggleAccordian= () =>{
+    //     setToggle(true)
+    // }
     const inputProduct ={
         Type: Number,
         Product: Number,
@@ -62,7 +87,16 @@ const Purchase = (props: any) => {
         Invoice: '',
         productDetails: inputPurchaseProducts
     });
-    
+    const handleToggle =(type:any) =>{
+        if(type === 'p'){
+            setproduct(false)
+            setPurchase(true)
+        }
+        else if(type === 's'){
+            setproduct(true)
+            setPurchase(false)
+        }
+    }
    const getModel =(productId: number, models: any[], index: number) =>{
     axios('https://localhost:7247/api/product/getModelByProductId/'+productId,{
         method: 'GET',
@@ -109,12 +143,17 @@ const Purchase = (props: any) => {
         }
         product.productDetails.push(productDetailsData);
         setProduct({...product, productDetails : product.productDetails.sort((a: any,b: any) => a - b)})
+        setLenght(length +1)
+        
+        var setHeight = length +1;
     }
     const deleteRow = (data: any, datas: any[]) =>{
+        var length =   product.productDetails.length;
        var filterdataHaving =  datas.filter(f=> f.Index == data.Index);
        var filterdata =  datas.filter(f=> f.Index != data.Index);
         product['productDetails'] = filterdata;
         setProduct({...product,  ['productDetails']:filterdata})
+        setLenght(length -1)
     }
 
     const update=(e: any) =>{
@@ -144,7 +183,7 @@ const Purchase = (props: any) => {
         return product.productDetails.map((m: any, i: Number) => 
         {
           return  <tr id={'row_'+i}>
-            <td scope="row">{i}</td>
+            <td scope="row"  className="sl">{i}</td>
                 <td scope="row"><select id={'type_'+i} name='Type'  onChange={(event:any) => updateRow(i, m,event)} className="form-control">
                 <option value={0}>--Select--</option>
                     <option value={1}>Product</option>
@@ -179,7 +218,6 @@ const Purchase = (props: any) => {
                 <td>
                     <button type="button" className="btn btn-secondary" onClick={(event: any) => deleteRow(m, product.productDetails)}>Delete</button></td>
             </tr>
-
         })
     }
     return (
@@ -193,13 +231,20 @@ const Purchase = (props: any) => {
                         <li className="breadcrumb-item active">Purchase Form</li>
                     </ol>
                 </div>
-                {/* <!--------------------------------------------------------------------------------->
+{/* <!--------------------------------------------------------------------------------->
 <!------------------------------Product Form--------------------------------------->
 <!---------------------------------------------------------------------------------> */}
                 <div className="card">
                     <div className="card-body">
                         <form action="#">
-                            <div className="row">
+                        <div className="form_accordian">
+                                <div className="accordian_header d-flex align-items-center"onClick={() => handleToggle('s')}>
+                                    <h3 className="mb-0">Accordian</h3>
+                                    {issetproduct ? <span className="ms-auto"><i className="fas fa-angle-up"></i></span> : <span className="ms-auto"><i className="fas fa-angle-down"></i></span>}
+                                </div>
+                                {issetproduct ?
+                                <div className="accordian_body">
+                                <div className="row">
                                 <div className="col-md-4 mb-2">
                                     <label>Name</label>
                                     <input type="text"  name='Name' onChange={update} className="form-control" placeholder="Name" />
@@ -207,61 +252,52 @@ const Purchase = (props: any) => {
 
                                 <div className="col-md-4 mb-2">
                                     <label>Address</label>
-                                    <textarea value={product.Address} name='Address'  onChange={update} className="form-control" placeholder="Address"></textarea>
+                                    <textarea value={product.Address} name='Address'  onChange={update} className="form-control" placeholder="Address" rows={1}></textarea>
+                                </div>
+                                <div className="col-md-4 mb-2">
+                                    <label>Invoice Number</label>
+                                    <input type="text" value={product.Invoice} name='Invoice'  onChange={update} className="form-control" placeholder="Invoice" />
+                                </div>                                
+                            </div>
+                                </div>
+                                :
+                                ''
+                    }
+                            </div>
+                            <div className="form_accordian">
+                                <div className="accordian_header d-flex align-items-center"onClick={() => handleToggle('p')}>
+                                    <h3 className="mb-0">Accordian</h3>
+                                    {ispurchase ? <span className="ms-auto"><i className="fas fa-angle-up"></i></span> : <span className="ms-auto"><i className="fas fa-angle-down"></i></span>}
+                                </div>
+                                {ispurchase ?
+                                <div className="accordian_body">
+                                <div className="row">
+                                <div className="col-md-4 mb-2">
+                                    <label>Name</label>
+                                    <input type="text"  name='Name' onChange={update} className="form-control" placeholder="Name" />
+                                </div>
+
+                                <div className="col-md-4 mb-2">
+                                    <label>Address</label>
+                                    <textarea value={product.Address} name='Address'  onChange={update} className="form-control" placeholder="Address" rows={1}></textarea>
                                 </div>
                                 <div className="col-md-4 mb-2">
                                     <label>Invoice Number</label>
                                     <input type="text" value={product.Invoice} name='Invoice'  onChange={update} className="form-control" placeholder="Invoice" />
                                 </div>
-                                {/* <div className="col-md-4 mb-2">
-                                    <label>Description</label>
-                                    <textarea value={product.de} name='Invoice'  onChange={() => update} className="form-control" placeholder="Description"></textarea>
-                                </div> */}
-
-
-                                {/* <div className="col-md-4 mb-2">
-                            <label>Category</label>
-                           <select className="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                           </select>
-                        </div>
-                        <div className="col-md-4 mb-2">
-                            <label className="d-block">Radio</label>
-                            <label className="me-2">
-                                <input type="radio" id="Male" name="fav_language"/>
-                                <label >Male</label>
-                            </label>
-                            <label className="me-2">
-                                <input type="radio" id="Female" name="fav_language"/>
-                                <label>Female</label>
-                            </label>
-                        </div>
-                        <div className="col-md-4 mb-2">
-                            <label className="d-block">checkbox</label>
-                            <label className="me-2">
-                                <input type="checkbox" id="checkbox1" name="fav_language"/>
-                                <label>checkbox1</label>
-                            </label>
-                            <label className="me-2">
-                                <input type="checkbox" id="checkbox2" name="fav_language"/>
-                                <label>checkbox2</label>
-                            </label>
-                            <label className="me-2">
-                                <input type="checkbox" id="checkbox3" name="fav_language"/>
-                                <label>checkbox3</label>
-                            </label>
-                            <label className="me-2">
-                                <input type="checkbox" id="checkbox4" name="fav_language"/>
-                                <label>checkbox4</label>
-                            </label>
-                        </div> */}
-                                <div className="table-responsive mt-4">
+                                
+                            </div>
+                                </div>
+                                :
+                                ''
+                    }
+                            </div>
+                            
+                            <div className="table-responsive custom_height" id="myTable">
                                     <table className="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th scope="col">Sl No.</th>
+                                            <th scope="col" className="sl">Sl No.</th>
                                                 <th scope="col">Type</th>
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Sub Cateagory</th>
@@ -284,64 +320,18 @@ const Purchase = (props: any) => {
                                             }
                                         </tbody>
                                     </table>
-                                    <button type="button" className="btn btn-success" onClick={AddNewRow}>New Row</button>
                                 </div>
+                                <div className="text-end">
+                                    <button type="button" className="btn btn-success"disabled={isLength === 10}  onClick={AddNewRow}>New Row</button>
                             </div>
                         </form>
+                        
                     </div>
                     <div className="card-footer text-end py-1">
                         <button type="button" className="btn btn-success">Save</button>
                         <button type="button" className="btn btn-secondary">Cancel</button>
                     </div>
                 </div>
-                {/* <div className="table-responsive mt-4">
-            <table className="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Si</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Qty</th>
-                  <th scope="col">Amout</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Address</td>
-                  <td>sample</td>
-                  <td>100</td>
-                  <td>10000</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Address</td>
-                  <td>sample</td>
-                  <td>100</td>
-                  <td>10000</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Address</td>
-                  <td>sample</td>
-                  <td>100</td>
-                  <td>10000</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Address</td>
-                  <td>sample</td>
-                  <td>100</td>
-                  <td>10000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div> */}
             </div>
         </div>
 
